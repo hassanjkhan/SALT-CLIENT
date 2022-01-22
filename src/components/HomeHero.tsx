@@ -11,7 +11,7 @@ const HomeHero = () => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <div
+    <section
       style={{
         height: 700,
         boxShadow: 'inset 0 0 0 1000px rgba(0,0,0,0.45)',
@@ -72,7 +72,7 @@ const HomeHero = () => {
           </Button>
         </Stack>
       </Stack>
-    </div>
+    </section>
   );
 };
 
