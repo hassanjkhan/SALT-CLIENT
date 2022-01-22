@@ -26,12 +26,14 @@ const HomeNav: React.FC<StackProps> = (props) => {
       <Stack direction='row' spacing={1} {...props}>
         {config.homeMenuItems.map((item) => (
           <StyledLink
+            key={item.path}
             variant='body2'
             underline='none'
             color='white'
             className={classes.link}
             to={item.path}
             component={item.hashLink ? HashLink : Link}
+            align={props.direction === 'column' ? 'center' : 'left'}
           >
             {item.label}
           </StyledLink>
