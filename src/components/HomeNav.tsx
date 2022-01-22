@@ -18,12 +18,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const HomeNav: React.FC<StackProps> = (props) => {
+interface Props extends StackProps {
+  onClick?: () => any;
+}
+
+const HomeNav: React.FC<Props> = (props) => {
+  const { onClick, ...rest } = props;
   const classes = useStyles();
 
   return (
     <div style={{ margin: '-0.5rem', ...props.style }}>
-      <Stack direction='row' spacing={1} {...props}>
+      <Stack direction='row' spacing={1} {...rest}>
         {config.homeMenuItems.map((item) => (
           <StyledLink
             key={item.path}
@@ -34,6 +39,7 @@ const HomeNav: React.FC<StackProps> = (props) => {
             to={item.path}
             component={item.hashLink ? HashLink : Link}
             align={props.direction === 'column' ? 'center' : 'left'}
+            onClick={() => onClick?.()}
           >
             {item.label}
           </StyledLink>

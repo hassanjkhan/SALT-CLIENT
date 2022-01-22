@@ -60,13 +60,18 @@ const HomeHeader = () => {
                   style={{ height: '90%' }}
                   spacing={4}
                 >
-                  <HomeNav direction='column' spacing={4} />
+                  <HomeNav
+                    direction='column'
+                    spacing={4}
+                    onClick={() => setOpen(false)}
+                  />
                   <Button
                     variant='contained'
                     size='small'
                     color='primary'
                     component={Link}
                     to='/portal'
+                    onClick={() => setOpen(false)}
                   >
                     Member's Portal
                   </Button>
