@@ -4,7 +4,10 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#1f9ab5',
+      main: '#2CD9FF',
+    },
+    secondary: {
+      main: '#111',
     },
   },
   typography: {
@@ -24,6 +27,10 @@ const theme = createTheme({
         sizeMedium: {
           paddingLeft: 20,
           paddingRight: 20,
+        },
+        containedPrimary: {
+          backgroundColor: '#1f9ab5',
+          color: 'white',
         },
       },
       defaultProps: {
