@@ -8,9 +8,9 @@ import DiscordIcon from './DiscordIcon';
 const HomeHero = () => {
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const [subtitleRef, , subtitleEntry] = useInView();
-  const [titleRef, , titleEntry] = useInView();
-  const [buttonsRef, , buttonsEntry] = useInView();
+  const [subtitleRef, , subtitleEntry] = useInView({ delay: 100 });
+  const [titleRef, , titleEntry] = useInView({ delay: 100 });
+  const [buttonsRef, , buttonsEntry] = useInView({ delay: 100 });
 
   return (
     <section
