@@ -1,8 +1,7 @@
 import { Stack, StackProps, Link as StyledLink, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import Link from 'next/link';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
 import config from '../config/config';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -30,19 +29,18 @@ const HomeNav: React.FC<Props> = (props) => {
     <div style={{ margin: '-0.5rem', ...props.style }}>
       <Stack direction='row' spacing={1} {...rest}>
         {config.homeMenuItems.map((item) => (
-          <StyledLink
-            key={item.path}
-            variant='body2'
-            underline='none'
-            color='white'
-            className={classes.link}
-            to={item.path}
-            component={item.hashLink ? HashLink : Link}
-            align={props.direction === 'column' ? 'center' : 'left'}
-            onClick={() => onClick?.()}
-          >
-            {item.label}
-          </StyledLink>
+          <Link key={item.path} href={item.path} passHref>
+            <StyledLink
+              variant='body2'
+              underline='none'
+              color='white'
+              className={classes.link}
+              align={props.direction === 'column' ? 'center' : 'left'}
+              onClick={() => onClick?.()}
+            >
+              {item.label}
+            </StyledLink>
+          </Link>
         ))}
       </Stack>
     </div>

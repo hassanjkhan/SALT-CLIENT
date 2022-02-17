@@ -34,7 +34,7 @@ const SocialLinks: React.FC<StackProps> = (props) => {
         component='a'
         href={config.discord}
       >
-        <DiscordIcon />
+        <DiscordIcon color='white' />
       </IconButton>
       <IconButton
         className={classes.button}

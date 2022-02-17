@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Close, Menu } from '@mui/icons-material';
 import {
   Button,
@@ -6,8 +7,8 @@ import {
   Stack,
   useMediaQuery,
 } from '@mui/material';
+import Link from 'next/link';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import config from '../config/config';
 import theme from '../theme';
 import HomeNav from './HomeNav';
@@ -65,16 +66,17 @@ const HomeHeader = () => {
                     spacing={4}
                     onClick={() => setOpen(false)}
                   />
-                  <Button
-                    variant='contained'
-                    size='small'
-                    color='primary'
-                    component={Link}
-                    to='/portal'
-                    onClick={() => setOpen(false)}
-                  >
-                    Member's Portal
-                  </Button>
+                  <Link href='/portal' passHref>
+                    <Button
+                      variant='contained'
+                      size='small'
+                      color='primary'
+                      onClick={() => setOpen(false)}
+                    >
+                      Member's Portal
+                    </Button>
+                  </Link>
+
                   <SocialLinks />
                 </Stack>
               </div>
@@ -84,15 +86,16 @@ const HomeHeader = () => {
           <>
             <SocialLinks />
             <HomeNav style={{ marginLeft: 'auto' }} />
-            <Button
-              variant='contained'
-              size='small'
-              color='primary'
-              component={Link}
-              to='/portal'
-            >
-              Member's Portal
-            </Button>
+            <Link href='/portal' passHref>
+              <Button
+                component='a'
+                variant='contained'
+                size='small'
+                color='primary'
+              >
+                Member's Portal
+              </Button>
+            </Link>
           </>
         )}
       </Stack>

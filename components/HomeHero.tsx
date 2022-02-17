@@ -1,8 +1,6 @@
 import { Twitter } from '@mui/icons-material';
 import { Button, Stack, Typography, useMediaQuery } from '@mui/material';
-import React from 'react';
 import config from '../config/config';
-import hero from '../images/hero.png';
 import theme from '../theme';
 import DiscordIcon from './DiscordIcon';
 
@@ -15,7 +13,7 @@ const HomeHero = () => {
       style={{
         height: 700,
         boxShadow: 'inset 0 0 0 1000px rgba(0,0,0,0.45)',
-        backgroundImage: `url(${hero})`,
+        backgroundImage: `url('/images/hero.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
