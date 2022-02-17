@@ -37,6 +37,7 @@ const HomeHeader = () => {
         position: 'fixed',
         width: '100%',
         padding: '1rem',
+        zIndex: 100,
 
         // animation
         transition: '500ms',
