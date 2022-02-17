@@ -13,6 +13,27 @@ const theme = createTheme({
   typography: {
     fontFamily: ['Mina', 'sans-serif'].join(','),
     h1: {
+      textTransform: 'uppercase',
+      fontFamily: ['Mochiy Pop P One', 'sans-serif'].join(','),
+    },
+    h2: {
+      textTransform: 'uppercase',
+      fontFamily: ['Mochiy Pop P One', 'sans-serif'].join(','),
+    },
+    h3: {
+      textTransform: 'uppercase',
+      fontFamily: ['Mochiy Pop P One', 'sans-serif'].join(','),
+    },
+    h4: {
+      textTransform: 'uppercase',
+      fontFamily: ['Mochiy Pop P One', 'sans-serif'].join(','),
+    },
+    h5: {
+      textTransform: 'uppercase',
+      fontFamily: ['Mochiy Pop P One', 'sans-serif'].join(','),
+    },
+    h6: {
+      textTransform: 'uppercase',
       fontFamily: ['Mochiy Pop P One', 'sans-serif'].join(','),
     },
   },
