@@ -1,5 +1,6 @@
 import { Twitter } from '@mui/icons-material';
 import { Button, Stack, Typography, useMediaQuery } from '@mui/material';
+import { useInView } from 'react-intersection-observer';
 import config from '../config/config';
 import theme from '../theme';
 import DiscordIcon from './DiscordIcon';
@@ -7,6 +8,9 @@ import DiscordIcon from './DiscordIcon';
 const HomeHero = () => {
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const [subtitleRef, , subtitleEntry] = useInView();
+  const [titleRef, , titleEntry] = useInView();
+  const [buttonsRef, , buttonsEntry] = useInView();
 
   return (
     <section
@@ -24,12 +28,23 @@ const HomeHero = () => {
     >
       <Stack spacing={2} alignItems='center'>
         <Typography
-          style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
+          ref={subtitleRef}
+          style={{
+            textTransform: 'uppercase',
+            fontWeight: 'bold',
+
+            // animation
+            transition: '500ms',
+            transform: subtitleEntry?.isIntersecting
+              ? 'translateX(0)'
+              : 'translateX(-50vw)',
+          }}
           align='center'
         >
           Welcome To
         </Typography>
         <Typography
+          ref={titleRef}
           align='center'
           component='h1'
           variant={mdDown ? 'h2' : 'h1'}
@@ -37,6 +52,12 @@ const HomeHero = () => {
             textTransform: 'uppercase',
             fontWeight: 'bold',
             marginBottom: '1rem',
+
+            // animation
+            transition: '500ms',
+            transform: titleEntry?.isIntersecting
+              ? 'translateX(0)'
+              : 'translateX(-50vw)',
           }}
         >
           <span style={{ color: theme.palette.primary.main }}>Salt</span>{' '}
@@ -44,11 +65,19 @@ const HomeHero = () => {
         </Typography>
 
         <Stack
+          ref={buttonsRef}
           direction={smDown ? 'column' : 'row'}
           justifyContent='center'
           alignItems='center'
           flexWrap='wrap'
           spacing={2}
+          style={{
+            // animation
+            transition: '500ms',
+            transform: buttonsEntry?.isIntersecting
+              ? 'translateX(0)'
+              : 'translateX(-50vw)',
+          }}
         >
           <Button
             variant='contained'

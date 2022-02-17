@@ -13,18 +13,26 @@ import config from '../config/config';
 import theme from '../theme';
 import HomeNav from './HomeNav';
 import SocialLinks from './SocialLinks';
+import { useInView } from 'react-intersection-observer';
 
 const HomeHeader = () => {
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const [open, setOpen] = useState(false);
+  const [headerRef, , headerEntry] = useInView();
+  const isHeaderIntersecting = headerEntry?.isIntersecting;
 
   return (
     <header
+      ref={headerRef}
       style={{
         background: 'rgba(0,0,0,0.7)',
         position: 'fixed',
         width: '100%',
         padding: '1rem',
+
+        // animation
+        transition: '500ms',
+        top: isHeaderIntersecting ? '0' : '-4rem',
       }}
     >
       <Stack direction='row' alignItems='center' spacing={2}>
