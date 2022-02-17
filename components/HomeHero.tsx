@@ -2,15 +2,25 @@ import { Twitter } from '@mui/icons-material';
 import { Button, Stack, Typography, useMediaQuery } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 import config from '../config/config';
+import useAnimation from '../hooks/useAnimation';
 import theme from '../theme';
 import DiscordIcon from './DiscordIcon';
 
 const HomeHero = () => {
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+
   const [subtitleRef, , subtitleEntry] = useInView({ delay: 100 });
   const [titleRef, , titleEntry] = useInView({ delay: 100 });
   const [buttonsRef, , buttonsEntry] = useInView({ delay: 100 });
+
+  const isSubtitleIntersecting = subtitleEntry?.isIntersecting;
+  const isTitleIntersecting = titleEntry?.isIntersecting;
+  const isButtonsIntersecting = buttonsEntry?.isIntersecting;
+
+  const subtitleAnimation = useAnimation('slideRight', isSubtitleIntersecting);
+  const titleAnimation = useAnimation('slideRight', isTitleIntersecting);
+  const buttonsAnimation = useAnimation('slideRight', isButtonsIntersecting);
 
   return (
     <section
@@ -32,12 +42,7 @@ const HomeHero = () => {
           style={{
             textTransform: 'uppercase',
             fontWeight: 'bold',
-
-            // animation
-            transition: '500ms',
-            transform: subtitleEntry?.isIntersecting
-              ? 'translateX(0)'
-              : 'translateX(-50vw)',
+            ...subtitleAnimation,
           }}
           align='center'
         >
@@ -52,12 +57,7 @@ const HomeHero = () => {
             textTransform: 'uppercase',
             fontWeight: 'bold',
             marginBottom: '1rem',
-
-            // animation
-            transition: '500ms',
-            transform: titleEntry?.isIntersecting
-              ? 'translateX(0)'
-              : 'translateX(-50vw)',
+            ...titleAnimation,
           }}
         >
           <span style={{ color: theme.palette.primary.main }}>Salt</span>{' '}
@@ -72,11 +72,7 @@ const HomeHero = () => {
           flexWrap='wrap'
           spacing={2}
           style={{
-            // animation
-            transition: '500ms',
-            transform: buttonsEntry?.isIntersecting
-              ? 'translateX(0)'
-              : 'translateX(-50vw)',
+            ...buttonsAnimation,
           }}
         >
           <Button
