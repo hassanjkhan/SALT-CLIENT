@@ -5,7 +5,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export",
+    "deploy": "next build && next export && firebase deploy --only hosting"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -16,9 +18,11 @@
     "@types/react-router-hash-link": "^2.4.5",
     "next": "12.0.10",
     "react": "17.0.2",
+    "react-circular-progressbar": "^2.0.4",
     "react-dom": "17.0.2",
     "react-intersection-observer": "^8.33.1",
-    "react-router-hash-link": "^2.4.3"
+    "react-router-hash-link": "^2.4.3",
+    "react-timer-hook": "^3.0.5"
   },
   "devDependencies": {
     "@types/node": "17.0.18",
